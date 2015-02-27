@@ -33,7 +33,7 @@ def load_file():
         fi = open(filename)
         text.delete('1.0', 'end')
         for x in fi:
-            text.insert('end', x.decode('shift_jis'))
+            text.insert('end', x.decode('utf-8'))
         fi.close()
         text.focus_set()
 def save_file():
