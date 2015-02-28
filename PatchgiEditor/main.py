@@ -17,7 +17,7 @@ root.configure(menu = menubar)
 
 if sys.platform == "win32":
 
-    root.wm_iconbitmap("boarder.ico")
+    root.wm_iconbitmap("boarder1.ico")
 
 
 
