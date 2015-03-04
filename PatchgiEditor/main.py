@@ -36,6 +36,7 @@ def load_file():
             text.insert('end', x.decode('utf-8'))
         fi.close()
         text.focus_set()
+
 def save_file():
     data = text.get('0.0', END)
     path_name= ""
@@ -47,6 +48,19 @@ def save_file():
         fi.write(data.encode('utf-8'))
         fi.close()  
 
+def new_file():
+    data = text.get('0.0', END)
+    path_name= ""
+    filename = asksaveasfilename(filetypes=[('Text Files', ('.txt', '.py'))],
+                               initialdir=path_name)
+    if filename != "":
+        fi = open(filename,"w")
+        fi.write(data.encode('utf-8'))
+        fi.close()  
+    text.delete('1.0', 'end')
+
+
+
 File=Menu(menubar,tearoff=False)
 Edit=Menu(menubar,tearoff=False)
 
@@ -54,7 +68,7 @@ Edit=Menu(menubar,tearoff=False)
 menubar.add_cascade(label="File",underline=0,menu=File)
 menubar.add_cascade(label="Edit",underline=0,menu=Edit)
 
-File.add_command(label="New File",under=0)
+File.add_command(label="New File",under=0,command=new_file)
 File.add_command(label="Open File",under=0,command=load_file)
 File.add_command(label="Save File",under=0,command=save_file)
 
